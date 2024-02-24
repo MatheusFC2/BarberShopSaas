@@ -1,10 +1,11 @@
 import { db } from "@/app/_lib/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import nextAuth from "next-auth";
+import nextAuth, { AuthOptions } from "next-auth";
 import { Adapter } from "next-auth/adapters";
+import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
-const handler = nextAuth({
+export const authOptions: AuthOptions = {
   // Configure one or more authentication providers
   adapter: PrismaAdapter(db) as Adapter,
   providers: [
@@ -13,6 +14,8 @@ const handler = nextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
