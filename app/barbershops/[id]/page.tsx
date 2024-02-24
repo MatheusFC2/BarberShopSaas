@@ -2,6 +2,7 @@ import { db } from "@/app/_lib/prisma";
 import BarbershopInfo from "./_components/barbershop-info";
 import ServiceItem from "./_components/service-item";
 import { Key } from "react";
+import Header from "@/app/_components/header";
 
 interface BarbershopDetailsPageProps {
   params: any;
