@@ -41,6 +41,7 @@ export default async function BarbershopDetailsPage({
         {barbershop.services.map((service: { id: Key | null | undefined }) => (
           <ServiceItem
             key={service.id}
+            barbershop={barbershop}
             service={service}
             isAuthenticated={!!session?.user}
           />
